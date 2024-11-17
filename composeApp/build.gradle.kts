@@ -47,6 +47,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.client.core)
+            implementation(libs.navigation.compose)
         }
     }
 }
