@@ -1,39 +1,39 @@
 package de.mirgorod.word.forge
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.layout.windowInsetsTopHeight
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import de.mirgorod.word.forge.feature.bottomnavbar.BottomNavigationBar
+import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Menu
+import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Settings
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import wordforge.composeapp.generated.resources.Res
-import wordforge.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
 fun App() {
+    val navController = rememberNavController()
+
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+        Scaffold(
+            bottomBar = { BottomNavigationBar(navController = navController) }
+        ) { innerPadding ->
+            NavHost(
+                navController = navController,
+                startDestination = Menu,
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                composable<Menu> {
+                    Column { Text("Screen Menu") }
+                }
+                composable<Settings> {
+                    Column { Text("Screen Settings") }
                 }
             }
         }

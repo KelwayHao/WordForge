@@ -24,6 +24,7 @@ ksp = "2.0.10-1.0.24"
 ktorVersion = "2.3.12"
 navigationCompose = "2.8.0-alpha10"
 pagingComposeAndroid = "3.3.2"
+serialization = "1.6.3"
 
 [libraries]
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
@@ -50,7 +51,7 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 androidx-datastore-core-okio = { group = "androidx.datastore", name = "datastore-core-okio", version.ref = "dataStoreVersion" }
 androidx-datastore-preferences-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "dataStoreVersion" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
