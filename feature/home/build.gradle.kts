@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -6,6 +7,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -23,7 +25,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "UiCore"
+            baseName = "FeatureHome"
             isStatic = true
         }
     }
@@ -36,12 +38,15 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(projects.core.common)
+            implementation(libs.navigation.compose)
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }
 
 android {
-    namespace = "de.mirgorod.word.forge.ui.core"
+    namespace = "de.mirgorod.word.forge.feature.home"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

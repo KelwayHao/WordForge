@@ -15,11 +15,11 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import de.mirgorod.word.forge.feature.bottomnavbar.nav.item.BottomNavItem
-import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Menu
+import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Home
 import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Settings
 import org.jetbrains.compose.resources.stringResource
 import wordforge.feature.bottomnavbar.generated.resources.Res
-import wordforge.feature.bottomnavbar.generated.resources.bottom_nav_item_menu
+import wordforge.feature.bottomnavbar.generated.resources.bottom_nav_item_home
 import wordforge.feature.bottomnavbar.generated.resources.bottom_nav_item_settings
 
 @Composable
@@ -30,8 +30,8 @@ fun BottomNavigationBar(navController: NavController) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         val menuItems = listOf(
-            BottomNavItem(Res.string.bottom_nav_item_menu, Menu, Icons.Default.Menu),
-            BottomNavItem(Res.string.bottom_nav_item_settings, Settings, Icons.Default.Settings)
+            BottomNavItem(Res.string.bottom_nav_item_home, Home, Icons.Default.Menu),
+            BottomNavItem(Res.string.bottom_nav_item_settings, Settings, Icons.Default.Settings, isEnable = false)
         )
         menuItems.forEach { item ->
             BottomNavigationItem(
@@ -55,7 +55,8 @@ fun BottomNavigationBar(navController: NavController) {
                         contentDescription = stringResource(resource = item.name)
                     )
                 },
-                label = { Text(text = stringResource(resource = item.name)) }
+                label = { Text(text = stringResource(resource = item.name)) },
+                enabled = item.isEnable,
             )
         }
     }

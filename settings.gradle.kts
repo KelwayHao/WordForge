@@ -29,5 +29,8 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
-include(":ui:core")
+include(":core:ui")
+include(":core:common")
+
 include(":feature:bottomnavbar")
+include(":feature:home")
