@@ -39,8 +39,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(projects.core.common)
-            implementation(libs.navigation.compose)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
         }
     }
 }
