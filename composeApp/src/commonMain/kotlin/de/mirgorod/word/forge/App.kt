@@ -11,7 +11,6 @@ import androidx.navigation.compose.rememberNavController
 import de.mirgorod.word.forge.feature.bottomnavbar.BottomNavigationBar
 import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Home
 import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Settings
-import de.mirgorod.word.forge.feature.home.di.homeModule
 import de.mirgorod.word.forge.feature.home.presentation.HomeContent
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
@@ -23,7 +22,7 @@ fun App(
     platformModule: Module = Module()
 ) {
     KoinApplication(
-        application = { modules(platformModule, homeModule) }
+        application = { modules(koinModules(platformModule = platformModule)) }
     ) {
         val navController = rememberNavController()
 
