@@ -1,4 +1,4 @@
-package de.mirgorod.word.forge.core.common
+package de.mirgorod.word.forge.core.common.viewmodel
 
 import androidx.lifecycle.ViewModel
 
