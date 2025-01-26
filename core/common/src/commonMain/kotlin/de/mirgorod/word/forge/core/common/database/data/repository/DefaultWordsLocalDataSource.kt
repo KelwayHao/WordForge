@@ -11,12 +11,18 @@ internal class DefaultWordsLocalDataSource(
     private val appDatabase: AppDatabase,
     private val wordMapper: WordMapper,
 ) : WordsRepository {
+
     override fun getAllWords(): Flow<List<Word>> {
         return appDatabase.wordDao().getAllWords().map { wordEntities ->
             wordEntities.map { wordEntity ->
                 wordMapper.mapToWord(from = wordEntity)
             }
         }
+    }
+
+    override fun getWordsBySetId(setId: Long): Flow<List<Word>> {
+        return appDatabase.wordDao().getWordsBySetId(setId = setId)
+            .map { it.map { wordEntity -> wordMapper.mapToWord(from = wordEntity) } }
     }
 
     override suspend fun insertWord(word: Word) {

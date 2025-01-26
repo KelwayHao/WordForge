@@ -11,6 +11,9 @@ internal interface WordsDao {
     @Insert
     suspend fun insertWord(word: WordEntity)
 
-    @Query("SELECT * FROM words_table")
+    @Query("SELECT * FROM words")
     fun getAllWords(): Flow<List<WordEntity>>
+
+    @Query("SELECT * FROM words WHERE setId = :setId")
+    fun getWordsBySetId(setId: Long): Flow<List<WordEntity>>
 }

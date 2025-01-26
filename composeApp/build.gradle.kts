@@ -51,8 +51,11 @@ kotlin {
 
             implementation(projects.feature.bottomnavbar)
             implementation(projects.feature.home)
+            implementation(projects.feature.addSet)
+            implementation(projects.feature.set)
 
             implementation(projects.core.common)
+            implementation(projects.core.ui)
         }
     }
 }
@@ -81,6 +84,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose = true
     }
 }
 

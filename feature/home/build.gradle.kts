@@ -36,9 +36,12 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(projects.core.common)
+
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+
+            implementation(projects.core.common)
+            implementation(projects.core.ui)
         }
     }
 }
