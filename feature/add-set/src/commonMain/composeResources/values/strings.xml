@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="add_set_button">Add set</string>
+    <string name="add_term_button">Add term</string>
+    <string name="term_title">Term №%1$s</string>
+    <string name="term_label">Term</string>
+    <string name="definition_label">Definition</string>
+    <string name="set_name_label">Set name</string>
+</resources>

@@ -39,6 +39,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.json)
+
+            implementation(projects.core.ui)
         }
     }
 }

@@ -4,8 +4,11 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import de.mirgorod.word.forge.core.common.database.AppDatabase
 import de.mirgorod.word.forge.core.common.database.data.builder.DatabaseBuilderProvider
 import de.mirgorod.word.forge.core.common.database.data.mapper.WordMapper
+import de.mirgorod.word.forge.core.common.database.data.mapper.WordSetMapper
 import de.mirgorod.word.forge.core.common.database.data.migration.MIGRATIONS
+import de.mirgorod.word.forge.core.common.database.data.repository.DefaultWordSetLocalDataSource
 import de.mirgorod.word.forge.core.common.database.data.repository.DefaultWordsLocalDataSource
+import de.mirgorod.word.forge.core.common.database.domain.repository.WordSetRepository
 import de.mirgorod.word.forge.core.common.database.domain.repository.WordsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -31,5 +34,14 @@ val databaseModule = module {
             wordMapper = get(),
         )
     }
+
+    single<WordSetRepository> {
+        DefaultWordSetLocalDataSource(
+            appDatabase = get(),
+            wordSetMapper = get(),
+        )
+    }
+
     factory<WordMapper> { WordMapper() }
+    factory<WordSetMapper> { WordSetMapper() }
 }

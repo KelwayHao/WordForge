@@ -32,5 +32,7 @@ include(":composeApp")
 include(":core:ui")
 include(":core:common")
 
+include(":feature:add-set")
 include(":feature:bottomnavbar")
 include(":feature:home")
+include(":feature:set")

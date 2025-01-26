@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resources></resources>
+<resources>
+    <string name="result_screen_not_available_yet">Not available yet. In development</string>
+</resources>
