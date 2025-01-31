@@ -10,6 +10,7 @@ internal class WordMapper {
             term = from.term,
             definition = from.definition,
             setId = from.setId,
+            isLearned = from.isLearned
         )
     }
 
@@ -19,6 +20,7 @@ internal class WordMapper {
             term = from.term,
             definition = from.definition,
             setId = from.setId,
+            isLearned = from.isLearned,
         )
     }
 }

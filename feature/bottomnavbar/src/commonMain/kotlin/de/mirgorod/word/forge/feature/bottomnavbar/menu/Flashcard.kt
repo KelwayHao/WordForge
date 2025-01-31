@@ -3,4 +3,4 @@ package de.mirgorod.word.forge.feature.bottomnavbar.menu
 import kotlinx.serialization.Serializable
 
 @Serializable
-object Home
+data class Flashcard(val setId: Long)
