@@ -3,6 +3,7 @@ package de.mirgorod.word.forge.feature.flashcard.presentation
 import androidx.lifecycle.viewModelScope
 import de.mirgorod.word.forge.core.common.database.domain.repository.WordsRepository
 import de.mirgorod.word.forge.core.common.viewmodel.BaseViewModel
+import de.mirgorod.word.forge.navigation.domain.router.NavigationRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,6 +13,7 @@ import kotlinx.coroutines.launch
 
 internal class FlashcardViewModel(
     private val setId: Long,
+    private val router: NavigationRouter,
     private val wordsRepository: WordsRepository,
 ) : BaseViewModel() {
 

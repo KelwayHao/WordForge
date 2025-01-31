@@ -57,6 +57,7 @@ kotlin {
             implementation(projects.feature.flashcard)
 
             implementation(projects.core.common)
+            implementation(projects.core.navigation)
             implementation(projects.core.ui)
         }
     }

@@ -1,3 +1,5 @@
 package de.mirgorod.word.forge.feature.set.presentation.details
 
-internal sealed class SetDetailsEvent
+internal sealed class SetDetailsEvent {
+    class OnClickFlashcardButton : SetDetailsEvent()
+}

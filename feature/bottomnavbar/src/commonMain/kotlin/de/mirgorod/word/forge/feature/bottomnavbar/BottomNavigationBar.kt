@@ -18,9 +18,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import de.mirgorod.word.forge.feature.bottomnavbar.item.BottomNavItem
-import de.mirgorod.word.forge.feature.bottomnavbar.menu.AddSet
-import de.mirgorod.word.forge.feature.bottomnavbar.menu.Home
-import de.mirgorod.word.forge.feature.bottomnavbar.menu.Settings
+import de.mirgorod.word.forge.navigation.domain.model.AddSet
+import de.mirgorod.word.forge.navigation.domain.model.Home
+import de.mirgorod.word.forge.navigation.domain.model.Settings
 import de.mirgorod.word.forge.ui.dsComponent.Theme
 import org.jetbrains.compose.resources.stringResource
 import wordforge.feature.bottomnavbar.generated.resources.Res
