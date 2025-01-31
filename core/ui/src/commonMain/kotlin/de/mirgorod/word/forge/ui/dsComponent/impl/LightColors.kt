@@ -51,7 +51,7 @@ internal data class LightTextColorTransparent(
 @Suppress("MagicNumber")
 @Immutable
 internal data class LightBackgroundColor(
-    override val primary: Color = Color(0xFFF3FFF9),
+    override val primary: Color = Color(0xFFFFFFFF),
     override val secondary: Color = Color(0xFFA9DEC6),
     override val tertiary: Color = Color(0xFF41916C),
     override val neutral: Color = Color(0xFFDCDCDD),

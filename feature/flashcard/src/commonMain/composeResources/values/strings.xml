@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="button_know">Know</string>
+    <string name="button_do_not_know">Don't know</string>
+    <string name="flashcard_progress_status">%1$s / %2$s</string>
+</resources>

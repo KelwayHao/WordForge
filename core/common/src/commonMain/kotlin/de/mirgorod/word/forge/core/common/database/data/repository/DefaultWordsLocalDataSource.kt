@@ -28,4 +28,8 @@ internal class DefaultWordsLocalDataSource(
     override suspend fun insertWord(word: Word) {
         appDatabase.wordDao().insertWord(word = wordMapper.mapToWordEntity(from = word))
     }
+
+    override suspend fun markWordAsLearned(wordId: Long, isLearned: Boolean) {
+        appDatabase.wordDao().markWordAsLearned(wordId = wordId, isLearned = isLearned)
+    }
 }

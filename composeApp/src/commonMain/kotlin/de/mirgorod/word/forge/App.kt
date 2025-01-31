@@ -11,9 +11,11 @@ import androidx.navigation.toRoute
 import de.mirgorod.word.forge.feature.add.set.presentation.add.AddSetContent
 import de.mirgorod.word.forge.feature.bottomnavbar.BottomNavigationBar
 import de.mirgorod.word.forge.feature.bottomnavbar.menu.AddSet
+import de.mirgorod.word.forge.feature.bottomnavbar.menu.Flashcard
+import de.mirgorod.word.forge.feature.bottomnavbar.menu.Home
 import de.mirgorod.word.forge.feature.bottomnavbar.menu.SetDetails
-import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Home
-import de.mirgorod.word.forge.feature.bottomnavbar.nav.menu.Settings
+import de.mirgorod.word.forge.feature.bottomnavbar.menu.Settings
+import de.mirgorod.word.forge.feature.flashcard.presentation.FlashcardContent
 import de.mirgorod.word.forge.feature.home.presentation.HomeContent
 import de.mirgorod.word.forge.feature.set.presentation.details.SetDetailsContent
 import de.mirgorod.word.forge.ui.dsComponent.KitTheme
@@ -73,7 +75,13 @@ fun App(
                     }
                     composable<SetDetails> { backStackEntry ->
                         val setContent = backStackEntry.toRoute<SetDetails>()
-                        SetDetailsContent(setId = setContent.setId)
+                        SetDetailsContent(setId = setContent.setId, onClickPlayFlashcard = { id ->
+                            navController.navigate(route = Flashcard(setId = id))
+                        })
+                    }
+                    composable<Flashcard> { backStackEntry ->
+                        val flashcard = backStackEntry.toRoute<Flashcard>()
+                        FlashcardContent(setId = flashcard.setId)
                     }
                 }
             }

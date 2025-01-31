@@ -17,5 +17,6 @@ internal data class WordEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val setId: Long? = null,
     val term: String,
-    val definition: String
+    val definition: String,
+    val isLearned: Boolean = false,
 )

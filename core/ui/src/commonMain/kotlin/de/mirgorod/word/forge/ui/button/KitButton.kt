@@ -28,7 +28,7 @@ fun KitButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = modifier,
         enabled = enabled,
         contentPadding = PaddingValues(all = 16.dp),
         content = {

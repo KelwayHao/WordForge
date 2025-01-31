@@ -34,5 +34,6 @@ include(":core:common")
 
 include(":feature:add-set")
 include(":feature:bottomnavbar")
+include(":feature:flashcard")
 include(":feature:home")
 include(":feature:set")

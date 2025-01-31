@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
@@ -22,17 +22,12 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "FeatureFlashcard"
             isStatic = true
         }
     }
 
     sourceSets {
-
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -40,21 +35,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.koin.compose)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.ktor.client.core)
-            implementation(libs.navigation.compose)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kermit)
 
-            implementation(projects.feature.bottomnavbar)
-            implementation(projects.feature.home)
-            implementation(projects.feature.addSet)
-            implementation(projects.feature.set)
-            implementation(projects.feature.flashcard)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
 
             implementation(projects.core.common)
             implementation(projects.core.ui)
@@ -63,15 +46,11 @@ kotlin {
 }
 
 android {
-    namespace = "de.mirgorod.word.forge"
+    namespace = "de.mirgorod.word.forge.feature.flashcard"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "de.mirgorod.word.forge"
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
     }
     packaging {
         resources {
@@ -87,12 +66,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-

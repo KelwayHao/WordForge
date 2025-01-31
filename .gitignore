@@ -16,3 +16,4 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+/core/common/schemas/de.mirgorod.word.forge.core.common.database.AppDatabase/*

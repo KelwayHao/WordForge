@@ -13,15 +13,20 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.mirgorod.word.forge.feature.set.presentation.component.WordContent
+import de.mirgorod.word.forge.ui.button.KitButton
 import de.mirgorod.word.forge.ui.dsComponent.Theme
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
+import wordforge.feature.set.generated.resources.Res
+import wordforge.feature.set.generated.resources.play_flashcard_button
 
 @Composable
-fun SetDetailsContent(setId: Long) {
+fun SetDetailsContent(setId: Long, onClickPlayFlashcard: (Long) -> Unit) {
     val viewModel: SetDetailsViewModel = koinViewModel { parametersOf(setId) }
     SetDetailsContentScreen(
         state = viewModel.state.collectAsState().value,
+        onClickPlayFlashcard = { onClickPlayFlashcard.invoke(setId) },
         eventHandler = viewModel::handleEvent,
     )
 }
@@ -30,12 +35,13 @@ fun SetDetailsContent(setId: Long) {
 @Composable
 private fun SetDetailsContentScreen(
     state: SetDetailsUiState,
+    onClickPlayFlashcard: () -> Unit,
     eventHandler: (event: SetDetailsEvent) -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        LazyColumn {
+        LazyColumn(modifier = Modifier.weight(weight = 1f)) {
             items(state.wordsList.size) { index ->
                 val word = state.wordsList[index]
                 Card(
@@ -44,11 +50,16 @@ private fun SetDetailsContentScreen(
                     elevation = 1.dp,
                     shape = RoundedCornerShape(16.dp),
                     backgroundColor = Theme.color.background.secondary,
-                    onClick = {  }
+                    onClick = { }
                 ) {
                     WordContent(word = word, modifier = Modifier.padding(all = 16.dp))
                 }
             }
         }
+        KitButton(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+            text = stringResource(resource = Res.string.play_flashcard_button),
+            onClick = { onClickPlayFlashcard.invoke() }
+        )
     }
 }

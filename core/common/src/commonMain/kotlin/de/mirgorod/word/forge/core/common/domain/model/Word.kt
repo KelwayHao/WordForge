@@ -5,4 +5,5 @@ data class Word(
     val setId: Long? = null,
     val term: String,
     val definition: String,
+    val isLearned: Boolean = false,
 )

@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resources></resources>
+<resources>
+    <string name="play_flashcard_button">Play Flashcard</string>
+</resources>

@@ -140,12 +140,12 @@ private fun AddSetBottomButtons(
     onNavigateToHome: () -> Unit,
 ) {
     KitButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
         text = stringResource(resource = Res.string.add_term_button),
         onClick = { eventHandler.invoke(AddSetEvent.AddWord()) },
     )
     KitButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
         text = stringResource(resource = Res.string.add_set_button),
         onClick = { eventHandler.invoke(AddSetEvent.AddSet(onNavigateToHome = onNavigateToHome)) },
     )
