@@ -9,6 +9,7 @@ val setModule = module {
         SetDetailsViewModel(
             setId = setId,
             wordsRepository = get(),
+            router = get(),
         )
     }
 }

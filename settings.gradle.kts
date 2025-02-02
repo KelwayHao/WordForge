@@ -31,6 +31,7 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":core:ui")
 include(":core:common")
+include(":core:navigation")
 
 include(":feature:add-set")
 include(":feature:bottomnavbar")

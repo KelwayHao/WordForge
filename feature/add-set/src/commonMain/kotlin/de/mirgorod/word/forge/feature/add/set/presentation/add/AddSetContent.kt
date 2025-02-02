@@ -26,12 +26,11 @@ import wordforge.feature.add_set.generated.resources.term_label
 import wordforge.feature.add_set.generated.resources.term_title
 
 @Composable
-fun AddSetContent(onNavigateToHome: () -> Unit) {
+fun AddSetContent() {
     val viewModel: AddSetViewModel = koinViewModel()
     AddSetContentScreen(
         state = viewModel.state.collectAsState().value,
         eventHandler = viewModel::handleEvent,
-        onNavigateToHome = onNavigateToHome,
     )
 }
 
@@ -39,7 +38,6 @@ fun AddSetContent(onNavigateToHome: () -> Unit) {
 private fun AddSetContentScreen(
     state: AddSetUiState,
     eventHandler: (event: AddSetEvent) -> Unit,
-    onNavigateToHome: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -48,7 +46,6 @@ private fun AddSetContentScreen(
         AddSetWordsList(
             state = state,
             eventHandler = eventHandler,
-            onNavigateToHome = onNavigateToHome
         )
     }
 }
@@ -57,21 +54,17 @@ private fun AddSetContentScreen(
 private fun AddSetWordsList(
     state: AddSetUiState,
     eventHandler: (event: AddSetEvent) -> Unit,
-    onNavigateToHome: () -> Unit,
 ) {
     LazyColumn {
         items(state.wordsList.size) { index ->
             AddSetWordItem(
                 index = index,
                 state = state,
-                eventHandler = eventHandler
+                eventHandler = eventHandler,
             )
         }
         item {
-            AddSetBottomButtons(
-                eventHandler = eventHandler,
-                onNavigateToHome = onNavigateToHome
-            )
+            AddSetBottomButtons(eventHandler = eventHandler)
         }
     }
 }
@@ -137,7 +130,6 @@ private fun AddSetNameField(
 @Composable
 private fun AddSetBottomButtons(
     eventHandler: (event: AddSetEvent) -> Unit,
-    onNavigateToHome: () -> Unit,
 ) {
     KitButton(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
@@ -147,6 +139,6 @@ private fun AddSetBottomButtons(
     KitButton(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
         text = stringResource(resource = Res.string.add_set_button),
-        onClick = { eventHandler.invoke(AddSetEvent.AddSet(onNavigateToHome = onNavigateToHome)) },
+        onClick = { eventHandler.invoke(AddSetEvent.AddSet()) },
     )
 }

@@ -32,12 +32,11 @@ import wordforge.feature.home.generated.resources.ic_close_24
 import wordforge.feature.home.generated.resources.word_set_title
 
 @Composable
-fun HomeContent(onNavigateToSetDetails: (Long) -> Unit) {
+fun HomeContent() {
     val viewModel: HomeViewModel = koinViewModel()
     HomeContentScreen(
         state = viewModel.state.collectAsState().value,
         eventHandler = viewModel::handleEvent,
-        onNavigateToSetDetails = onNavigateToSetDetails
     )
 }
 
@@ -46,7 +45,6 @@ fun HomeContent(onNavigateToSetDetails: (Long) -> Unit) {
 private fun HomeContentScreen(
     state: HomeUiState,
     eventHandler: (event: HomeEvent) -> Unit,
-    onNavigateToSetDetails: (Long) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -71,8 +69,10 @@ private fun HomeContentScreen(
                         shape = RoundedCornerShape(16.dp),
                         backgroundColor = Theme.color.background.secondary,
                         onClick = {
-                            onNavigateToSetDetails.invoke(
-                                state.wordSetList[index].id ?: 0L
+                            eventHandler.invoke(
+                                HomeEvent.ClickSet(
+                                    id = state.wordSetList[index].id ?: 0L
+                                )
                             )
                         }) {
                         Column(modifier = Modifier.padding(all = 16.dp)) {

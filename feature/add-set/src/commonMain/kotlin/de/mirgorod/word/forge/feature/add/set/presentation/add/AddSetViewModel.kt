@@ -6,6 +6,9 @@ import de.mirgorod.word.forge.core.common.database.domain.repository.WordsReposi
 import de.mirgorod.word.forge.core.common.domain.model.Word
 import de.mirgorod.word.forge.core.common.domain.model.WordSet
 import de.mirgorod.word.forge.core.common.viewmodel.BaseViewModel
+import de.mirgorod.word.forge.navigation.domain.model.AddSet
+import de.mirgorod.word.forge.navigation.domain.model.Home
+import de.mirgorod.word.forge.navigation.domain.router.NavigationRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,6 +17,7 @@ import kotlinx.coroutines.launch
 internal class AddSetViewModel(
     private val wordSetRepository: WordSetRepository,
     private val wordsRepository: WordsRepository,
+    private val router: NavigationRouter,
 ) : BaseViewModel() {
 
     private val _state: MutableStateFlow<AddSetUiState> = MutableStateFlow(AddSetUiState())
@@ -21,7 +25,7 @@ internal class AddSetViewModel(
 
     fun handleEvent(event: AddSetEvent) {
         when (event) {
-            is AddSetEvent.AddSet -> addSet(onNavigateToHome = event.onNavigateToHome)
+            is AddSetEvent.AddSet -> addSet()
             is AddSetEvent.AddWord -> addWord()
             is AddSetEvent.ChangeNameSet -> changeNameSet(name = event.name)
             is AddSetEvent.ChangeWordById -> changeWordById(
@@ -67,7 +71,7 @@ internal class AddSetViewModel(
         )
     }
 
-    private fun addSet(onNavigateToHome: () -> Unit) {
+    private fun addSet() {
         viewModelScope.launch {
             val wordSetId = wordSetRepository.insertWordSet(
                 wordSet = WordSet(name = _state.value.nameSet)
@@ -79,7 +83,7 @@ internal class AddSetViewModel(
                 )
             }
 
-            onNavigateToHome.invoke()
+            router.navigateTo(route = Home, clearBackStackDestination = AddSet)
         }
     }
 }

@@ -22,11 +22,10 @@ import wordforge.feature.set.generated.resources.Res
 import wordforge.feature.set.generated.resources.play_flashcard_button
 
 @Composable
-fun SetDetailsContent(setId: Long, onClickPlayFlashcard: (Long) -> Unit) {
+fun SetDetailsContent(setId: Long) {
     val viewModel: SetDetailsViewModel = koinViewModel { parametersOf(setId) }
     SetDetailsContentScreen(
         state = viewModel.state.collectAsState().value,
-        onClickPlayFlashcard = { onClickPlayFlashcard.invoke(setId) },
         eventHandler = viewModel::handleEvent,
     )
 }
@@ -35,7 +34,6 @@ fun SetDetailsContent(setId: Long, onClickPlayFlashcard: (Long) -> Unit) {
 @Composable
 private fun SetDetailsContentScreen(
     state: SetDetailsUiState,
-    onClickPlayFlashcard: () -> Unit,
     eventHandler: (event: SetDetailsEvent) -> Unit,
 ) {
     Column(
@@ -59,7 +57,7 @@ private fun SetDetailsContentScreen(
         KitButton(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
             text = stringResource(resource = Res.string.play_flashcard_button),
-            onClick = { onClickPlayFlashcard.invoke() }
+            onClick = { eventHandler.invoke(SetDetailsEvent.OnClickFlashcardButton()) }
         )
     }
 }

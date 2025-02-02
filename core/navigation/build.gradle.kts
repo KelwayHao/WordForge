@@ -1,4 +1,3 @@
-
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -23,7 +22,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "FeatureAddSet"
+            baseName = "CoreNavigation"
             isStatic = true
         }
     }
@@ -32,23 +31,16 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
 
+            implementation(libs.navigation.compose)
             implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-
-            implementation(projects.core.common)
-            implementation(projects.core.ui)
-            implementation(projects.core.navigation)
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }
 
 android {
-    namespace = "de.mirgorod.word.forge.feature.add.set"
+    namespace = "de.mirgorod.word.forge.core.navigation"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -67,6 +59,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose = true
     }
 }
 

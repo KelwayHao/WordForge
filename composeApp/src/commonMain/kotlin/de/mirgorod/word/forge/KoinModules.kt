@@ -7,8 +7,9 @@ import de.mirgorod.word.forge.feature.home.di.homeModule
 import de.mirgorod.word.forge.feature.set.di.setModule
 import org.koin.core.module.Module
 
-internal fun koinModules(platformModule: Module) = listOf(
+internal fun koinModules(platformModule: Module, navigationModule: Module) = listOf(
     platformModule,
+    navigationModule,
     homeModule,
     databaseModule,
     addSetModule,

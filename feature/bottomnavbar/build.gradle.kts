@@ -12,7 +12,6 @@ plugins {
 kotlin {
     tasks.create("testClasses")
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -41,6 +40,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
 
             implementation(projects.core.ui)
+            implementation(projects.core.navigation)
         }
     }
 }
