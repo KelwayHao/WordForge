@@ -1,17 +1,18 @@
-name: Detekt
+name: Detekt CI
 
 on:
+  push:
+    branches: [ "main" ] # Запускать при пуше в ветку main
   pull_request:
-    branches: [main] # Укажите ветки, для которых нужно запускать Detekt
+    branches: [ "main" ] # Запускать при создании pull request в ветку main
 
 jobs:
   detekt:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest # Используем Ubuntu для запуска
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '11'
