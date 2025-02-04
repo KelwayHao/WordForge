@@ -1,35 +1,24 @@
-name: Detekt
+name: Detekt Analysis
 
 on:
   pull_request:
-    branches: [main] # Укажите ветки, для которых нужно запускать Detekt
+    branches:
+      - main
 
 jobs:
   detekt:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Setup JDK
         uses: actions/setup-java@v3
         with:
+          distribution: oracle
           java-version: '17'
-          distribution: 'temurin'
 
-      - name: Run Detekt
-        run: ./gradlew detekt
-
-      - name: Upload Detekt results as artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: detekt-results
-          path: build/reports/detekt
-          if-no-files-found: error
-
-      - name: Check Detekt results
+      - name: Build and Run Detekt
         run: |
-          if [[ -n "$(ls -A build/reports/detekt)" ]]; then
-            echo "Detekt обнаружил проблемы!"
-            exit 1
-          fi
+          ./gradlew detekt
