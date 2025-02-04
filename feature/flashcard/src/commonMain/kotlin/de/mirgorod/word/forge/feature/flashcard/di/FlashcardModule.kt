@@ -9,7 +9,6 @@ val flashcardModule = module {
         FlashcardViewModel(
             setId = setId,
             wordsRepository = get(),
-            router = get(),
         )
     }
 }

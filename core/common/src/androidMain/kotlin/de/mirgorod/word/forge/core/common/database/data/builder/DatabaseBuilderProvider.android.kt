@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package de.mirgorod.word.forge.core.common.database.data.builder
 
 import androidx.room.RoomDatabase

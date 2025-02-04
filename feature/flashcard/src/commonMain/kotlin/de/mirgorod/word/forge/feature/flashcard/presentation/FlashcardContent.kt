@@ -42,6 +42,7 @@ private const val CARD_FLIPPED_ANGLE = 180F
 private const val CARD_UNFLIPPED_ANGLE = 0F
 private const val MULTIPLE_CAMERA_DISTANCE = 8
 private const val BASE_SCALE = 0.8F
+private const val PART_CARD = 3F
 
 @Composable
 fun FlashcardContent(setId: Long) {
@@ -102,7 +103,7 @@ private fun FlashcardPlayField(
         Card(
             elevation = 1.dp,
             modifier = Modifier.padding(all = Theme.shape.space.m)
-                .weight(3F)
+                .weight(PART_CARD)
                 .graphicsLayer {
                     rotationY = rotation
                     cameraDistance = MULTIPLE_CAMERA_DISTANCE * density

@@ -24,5 +24,4 @@ internal class NavigationImpl(
     override fun goBack() {
         navController.popBackStack()
     }
-
 }
