@@ -92,9 +92,6 @@ private fun FlashcardPlayField(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
 
-
-
-
     ) {
         Text(
             modifier = Modifier.weight(1F),
