@@ -40,7 +40,6 @@ fun HomeContent() {
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun HomeContentScreen(
     state: HomeUiState,
@@ -63,47 +62,62 @@ private fun HomeContentScreen(
                     )
                 }
                 items(state.wordSetList.size) { index ->
-                    Card(modifier = Modifier.fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                        elevation = 1.dp,
-                        shape = RoundedCornerShape(16.dp),
-                        backgroundColor = Theme.color.background.secondary,
-                        onClick = {
-                            eventHandler.invoke(
-                                HomeEvent.ClickSet(
-                                    id = state.wordSetList[index].id ?: 0L
-                                )
-                            )
-                        }) {
-                        Column(modifier = Modifier.padding(all = 16.dp)) {
-                            Row(modifier = Modifier.fillMaxWidth()) {
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    text = state.wordSetList[index].name,
-                                    color = Theme.color.text.primary,
-                                    style = Theme.typography.paragraph.primaryMedium,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Clip,
-                                )
-                                IconButton(modifier = Modifier.background(
-                                    color = Theme.color.background.primary,
-                                    shape = RoundedCornerShape(size = Theme.shape.radius.l)
-                                ), onClick = {
-                                    eventHandler.invoke(
-                                        HomeEvent.DeleteSet(id = state.wordSetList[index].id)
-                                    )
-                                }) {
-                                    Icon(
-                                        painter = painterResource(resource = Res.drawable.ic_close_24),
-                                        contentDescription = null,
-                                        tint = Color.Red
-                                    )
-                                }
-                            }
-                        }
-                    }
+                    HomeSetCard(state = state, index = index, eventHandler = eventHandler)
                 }
                 item { Spacer(modifier = Modifier.height(height = 80.dp)) }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun HomeSetCard(
+    state: HomeUiState,
+    index: Int,
+    eventHandler: (event: HomeEvent) -> Unit,
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        elevation = 1.dp,
+        shape = RoundedCornerShape(16.dp),
+        backgroundColor = Theme.color.background.secondary,
+        onClick = {
+            eventHandler.invoke(
+                HomeEvent.ClickSet(
+                    id = state.wordSetList[index].id ?: 0L
+                )
+            )
+        }
+    ) {
+        Column(modifier = Modifier.padding(all = 16.dp)) {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = state.wordSetList[index].name,
+                    color = Theme.color.text.primary,
+                    style = Theme.typography.paragraph.primaryMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Clip,
+                )
+                IconButton(
+                    modifier = Modifier.background(
+                        color = Theme.color.background.primary,
+                        shape = RoundedCornerShape(size = Theme.shape.radius.l)
+                    ),
+                    onClick = {
+                        eventHandler.invoke(
+                            HomeEvent.DeleteSet(id = state.wordSetList[index].id)
+                        )
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(resource = Res.drawable.ic_close_24),
+                        contentDescription = null,
+                        tint = Color.Red
+                    )
+                }
             }
         }
     }

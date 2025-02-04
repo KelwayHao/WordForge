@@ -1,8 +1,6 @@
 package de.mirgorod.word.forge.ui.button
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonColors
@@ -44,6 +42,7 @@ fun KitButton(
     )
 }
 
+@Suppress("UnusedPrivateMember")
 @Preview
 @Composable
 private fun KitButtonPreview() {

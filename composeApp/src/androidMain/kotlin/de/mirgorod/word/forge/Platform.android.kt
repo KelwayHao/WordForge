@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package de.mirgorod.word.forge
 
 import android.os.Build

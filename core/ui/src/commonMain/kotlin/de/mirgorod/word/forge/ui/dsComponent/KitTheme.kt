@@ -74,6 +74,7 @@ val LocalKitShape = staticCompositionLocalOf<KitShape> {
 private fun provideKitTextColor(isLight: Boolean): KitColor =
     if (isLight) LightColors() else DarkColors()
 
+@Suppress("LongMethod")
 @Composable
 private fun provideTypography(): KitTypography {
     val typography = KitTypography()
