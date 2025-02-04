@@ -1,15 +1,23 @@
-name: Detekt Analysis
+name: Detekt CI
 
 on:
+  push:
+    branches: [ "main" ] # Запускать при пуше в ветку main
   pull_request:
-    branches:
-      - main
-      - develop  # Добавьте другие ветки по необходимости
+    branches: [ "main" ] # Запускать при создании pull request в ветку main
 
 jobs:
   detekt:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest # Используем Ubuntu для запуска
     steps:
-      - name: Detekt all
-        uses: natiginfo/action-detekt-all@1.23.7
+      - name: Checkout code
+        uses: actions/checkout@v3 # Сначала нужно выкачать код
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17' # Укажи нужную версию Java
+          distribution: 'temurin' # Используем Temurin JDK
+
+      - name: Run Detekt
+        run: ./gradlew detekt # Запускаем detekt через gradlew
