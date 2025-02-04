@@ -1,9 +1,9 @@
-name: Detekt
+name: Detekt Analysis
 
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   detekt:
