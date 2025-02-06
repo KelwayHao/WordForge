@@ -5,5 +5,5 @@ import de.mirgorod.word.forge.core.common.domain.model.WordSet
 
 @Immutable
 internal data class HomeUiState(
-    val wordSetList: List<WordSet> = listOf()
+    val wordSetList: List<WordSet> = listOf(),
 )

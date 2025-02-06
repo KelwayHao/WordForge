@@ -31,14 +31,14 @@ import wordforge.feature.bottomnavbar.generated.resources.bottom_nav_item_settin
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     BottomNavigation(
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.background,
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         val menuItems = listOf(
             BottomNavItem(Res.string.bottom_nav_item_home, Home, Icons.Default.Home),
             BottomNavItem(Res.string.bottom_nav_item_add_set, AddSet, Icons.Default.Add),
-            BottomNavItem(Res.string.bottom_nav_item_settings, Settings, Icons.Default.Settings)
+            BottomNavItem(Res.string.bottom_nav_item_settings, Settings, Icons.Default.Settings),
         )
         menuItems.forEach { item ->
             val selected = currentDestination?.route == item.route::class.qualifiedName
@@ -60,7 +60,7 @@ fun BottomNavigationBar(navController: NavController) {
                 label = {
                     Text(
                         text = stringResource(resource = item.name),
-                        style = Theme.typography.action.primarySmall
+                        style = Theme.typography.action.primarySmall,
                     )
                 },
                 enabled = item.isEnable,

@@ -37,7 +37,7 @@ private fun SetDetailsContentScreen(
     eventHandler: (event: SetDetailsEvent) -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         LazyColumn(modifier = Modifier.weight(weight = 1f)) {
             items(state.wordsList.size) { index ->
@@ -48,7 +48,7 @@ private fun SetDetailsContentScreen(
                     elevation = 1.dp,
                     shape = RoundedCornerShape(16.dp),
                     backgroundColor = Theme.color.background.secondary,
-                    onClick = { }
+                    onClick = { },
                 ) {
                     WordContent(word = word, modifier = Modifier.padding(all = 16.dp))
                 }
@@ -57,7 +57,7 @@ private fun SetDetailsContentScreen(
         KitButton(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
             text = stringResource(resource = Res.string.play_flashcard_button),
-            onClick = { eventHandler.invoke(SetDetailsEvent.OnClickFlashcardButton()) }
+            onClick = { eventHandler.invoke(SetDetailsEvent.OnClickFlashcardButton()) },
         )
     }
 }

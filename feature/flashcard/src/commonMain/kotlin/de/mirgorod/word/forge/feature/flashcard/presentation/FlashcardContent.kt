@@ -69,7 +69,7 @@ private fun FlashcardContentScreen(
             state = state,
             rotation = rotation,
             flipped = flipped,
-            cardStateHandler = { flipped = it }
+            cardStateHandler = { flipped = it },
         )
         FlashcardBottomButton(
             cardStateHandler = { flipped = it },
@@ -97,8 +97,8 @@ private fun FlashcardPlayField(
             text = stringResource(
                 resource = Res.string.flashcard_progress_status,
                 state.currentWordIndex.inc(),
-                state.wordsList.size
-            )
+                state.wordsList.size,
+            ),
         )
         Card(
             elevation = 1.dp,
@@ -125,7 +125,7 @@ private fun FlashcardPlayField(
                             modifier = Modifier.graphicsLayer {
                                 rotationY =
                                     if (isFlipped) CARD_FLIPPED_ANGLE else CARD_UNFLIPPED_ANGLE
-                            }
+                            },
                         )
                     }
                 }
@@ -148,7 +148,7 @@ private fun FlashcardBottomButton(
             onClick = {
                 cardStateHandler.invoke(false)
                 eventHandler.invoke(FlashcardEvent.DoNotKnowEvent())
-            }
+            },
         )
         KitButton(
             modifier = Modifier.weight(1f)
@@ -157,7 +157,7 @@ private fun FlashcardBottomButton(
             onClick = {
                 cardStateHandler.invoke(false)
                 eventHandler.invoke(FlashcardEvent.KnowEvent())
-            }
+            },
         )
     }
 }

@@ -24,13 +24,13 @@ fun KitResultScreen(
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         drawableResource?.let {
             Image(
                 painter = painterResource(it),
                 contentDescription = null,
-                modifier = Modifier.size(128.dp)
+                modifier = Modifier.size(128.dp),
             )
             Spacer(modifier = Modifier.height(height = 16.dp))
         }

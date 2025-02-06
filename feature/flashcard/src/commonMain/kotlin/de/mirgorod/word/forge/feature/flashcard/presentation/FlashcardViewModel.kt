@@ -42,7 +42,7 @@ internal class FlashcardViewModel(
             _state.value.currentWord?.id?.let { wordId ->
                 wordsRepository.markWordAsLearned(
                     wordId = wordId,
-                    isLearned = isLearned
+                    isLearned = isLearned,
                 )
             }
             if (isNextWordAvailable()) {

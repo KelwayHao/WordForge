@@ -30,12 +30,12 @@ internal class AddSetViewModel(
             is AddSetEvent.ChangeNameSet -> changeNameSet(name = event.name)
             is AddSetEvent.ChangeWordById -> changeWordById(
                 id = event.id,
-                newValue = event.newValue
+                newValue = event.newValue,
             )
 
             is AddSetEvent.ChangeTranslationById -> changeTranslationById(
                 id = event.id,
-                newValue = event.newValue
+                newValue = event.newValue,
             )
         }
     }
@@ -49,9 +49,9 @@ internal class AddSetViewModel(
             wordsList = _state.value.wordsList.plus(
                 Word(
                     term = "",
-                    definition = ""
-                )
-            )
+                    definition = "",
+                ),
+            ),
         )
     }
 
@@ -59,7 +59,7 @@ internal class AddSetViewModel(
         _state.value = _state.value.copy(
             wordsList = _state.value.wordsList.mapIndexed { index, word ->
                 if (index == id) word.copy(definition = newValue) else word
-            }
+            },
         )
     }
 
@@ -67,19 +67,19 @@ internal class AddSetViewModel(
         _state.value = _state.value.copy(
             wordsList = _state.value.wordsList.mapIndexed { index, word ->
                 if (index == id) word.copy(term = newValue) else word
-            }
+            },
         )
     }
 
     private fun addSet() {
         viewModelScope.launch {
             val wordSetId = wordSetRepository.insertWordSet(
-                wordSet = WordSet(name = _state.value.nameSet)
+                wordSet = WordSet(name = _state.value.nameSet),
             )
 
             _state.value.wordsList.forEach { word ->
                 wordsRepository.insertWord(
-                    word = word.copy(setId = wordSetId)
+                    word = word.copy(setId = wordSetId),
                 )
             }
 

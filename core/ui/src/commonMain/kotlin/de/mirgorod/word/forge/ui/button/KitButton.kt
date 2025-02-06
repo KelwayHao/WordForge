@@ -33,7 +33,7 @@ fun KitButton(
             Text(
                 text = text,
                 style = Theme.typography.action.primaryMedium,
-                color = Theme.color.text.primaryInverted
+                color = Theme.color.text.primaryInverted,
             )
         },
         shape = shape,

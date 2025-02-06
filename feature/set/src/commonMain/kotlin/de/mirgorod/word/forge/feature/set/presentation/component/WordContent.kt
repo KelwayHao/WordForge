@@ -16,7 +16,7 @@ fun WordContent(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         Text(text = word.term)
         Spacer(modifier = Modifier.height(height = 8.dp))

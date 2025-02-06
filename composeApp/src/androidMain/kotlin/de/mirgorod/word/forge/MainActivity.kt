@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.light(Color.White.toArgb(), Color.White.toArgb()),
-            navigationBarStyle = SystemBarStyle.light(Color.White.toArgb(), Color.White.toArgb())
+            navigationBarStyle = SystemBarStyle.light(Color.White.toArgb(), Color.White.toArgb()),
         )
         super.onCreate(savedInstanceState)
         setContent {
@@ -31,12 +31,12 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .windowInsetsPadding(insets = WindowInsets.statusBars)
-                    .windowInsetsPadding(insets = WindowInsets.systemBars)
+                    .windowInsetsPadding(insets = WindowInsets.systemBars),
             ) {
                 App(
                     platformModule = module {
                         single<Context> { applicationContext }
-                    }
+                    },
                 )
             }
         }
