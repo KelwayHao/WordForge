@@ -6,14 +6,14 @@ import androidx.room.RoomDatabase
 import de.mirgorod.word.forge.core.common.database.AppDatabase
 
 internal class DatabaseBuilderAndroid(
-    private val context: Context
+    private val context: Context,
 ) : DatabaseBuilderProvider {
     override fun provideDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         val appContext = context.applicationContext
         val dbFile = appContext.getDatabasePath("word_forge.db")
         return Room.databaseBuilder<AppDatabase>(
             context = appContext,
-            name = dbFile.absolutePath
+            name = dbFile.absolutePath,
         )
     }
 }

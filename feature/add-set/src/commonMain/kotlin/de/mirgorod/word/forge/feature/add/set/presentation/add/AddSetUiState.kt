@@ -6,5 +6,5 @@ import de.mirgorod.word.forge.core.common.domain.model.Word
 @Immutable
 internal data class AddSetUiState(
     val nameSet: String = "",
-    val wordsList: List<Word> = listOf(Word(term = "", definition = ""))
+    val wordsList: List<Word> = listOf(Word(term = "", definition = "")),
 )

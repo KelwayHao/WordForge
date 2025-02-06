@@ -11,7 +11,7 @@ internal class NavigationImpl(
     override fun navigateTo(
         route: RouteDestination,
         clearBackStackDestination: RouteDestination?,
-        singleTop: Boolean
+        singleTop: Boolean,
     ) {
         navController.navigate(route = route) {
             if (clearBackStackDestination != null) {

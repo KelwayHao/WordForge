@@ -4,7 +4,7 @@ interface NavigationRouter {
     fun navigateTo(
         route: RouteDestination,
         clearBackStackDestination: RouteDestination? = null,
-        singleTop: Boolean = true
+        singleTop: Boolean = true,
     )
 
     fun goBack()

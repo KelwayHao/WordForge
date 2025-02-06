@@ -40,7 +40,7 @@ private fun AddSetContentScreen(
     eventHandler: (event: AddSetEvent) -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         AddSetNameField(state = state, eventHandler = eventHandler)
         AddSetWordsList(
@@ -80,7 +80,7 @@ private fun AddSetWordItem(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         elevation = 1.dp,
         shape = RoundedCornerShape(16.dp),
-        backgroundColor = Theme.color.background.secondary
+        backgroundColor = Theme.color.background.secondary,
     ) {
         Column(modifier = Modifier.padding(all = 16.dp)) {
             Text(text = stringResource(Res.string.term_title, index.inc()))
@@ -91,11 +91,11 @@ private fun AddSetWordItem(
                     eventHandler.invoke(
                         AddSetEvent.ChangeWordById(
                             id = index,
-                            newValue = it
-                        )
+                            newValue = it,
+                        ),
                     )
                 },
-                label = { Text(text = stringResource(resource = Res.string.term_label)) }
+                label = { Text(text = stringResource(resource = Res.string.term_label)) },
             )
             KitOutlinedTextField(
                 modifier = Modifier.padding(vertical = 8.dp),
@@ -104,11 +104,11 @@ private fun AddSetWordItem(
                     eventHandler.invoke(
                         AddSetEvent.ChangeTranslationById(
                             id = index,
-                            newValue = it
-                        )
+                            newValue = it,
+                        ),
                     )
                 },
-                label = { Text(text = stringResource(resource = Res.string.definition_label)) }
+                label = { Text(text = stringResource(resource = Res.string.definition_label)) },
             )
         }
     }
@@ -123,7 +123,7 @@ private fun AddSetNameField(
         modifier = Modifier.padding(all = 16.dp),
         value = state.nameSet,
         onValueChange = { eventHandler.invoke(AddSetEvent.ChangeNameSet(name = it)) },
-        label = { Text(text = stringResource(resource = Res.string.set_name_label)) }
+        label = { Text(text = stringResource(resource = Res.string.set_name_label)) },
     )
 }
 

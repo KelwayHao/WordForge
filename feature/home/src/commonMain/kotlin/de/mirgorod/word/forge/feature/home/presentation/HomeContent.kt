@@ -86,10 +86,10 @@ private fun HomeSetCard(
         onClick = {
             eventHandler.invoke(
                 HomeEvent.ClickSet(
-                    id = state.wordSetList[index].id ?: 0L
-                )
+                    id = state.wordSetList[index].id ?: 0L,
+                ),
             )
-        }
+        },
     ) {
         Column(modifier = Modifier.padding(all = 16.dp)) {
             Row(modifier = Modifier.fillMaxWidth()) {
@@ -104,18 +104,18 @@ private fun HomeSetCard(
                 IconButton(
                     modifier = Modifier.background(
                         color = Theme.color.background.primary,
-                        shape = RoundedCornerShape(size = Theme.shape.radius.l)
+                        shape = RoundedCornerShape(size = Theme.shape.radius.l),
                     ),
                     onClick = {
                         eventHandler.invoke(
-                            HomeEvent.DeleteSet(id = state.wordSetList[index].id)
+                            HomeEvent.DeleteSet(id = state.wordSetList[index].id),
                         )
-                    }
+                    },
                 ) {
                     Icon(
                         painter = painterResource(resource = Res.drawable.ic_close_24),
                         contentDescription = null,
-                        tint = Color.Red
+                        tint = Color.Red,
                     )
                 }
             }

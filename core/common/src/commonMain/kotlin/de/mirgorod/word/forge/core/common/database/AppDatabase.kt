@@ -10,7 +10,7 @@ import de.mirgorod.word.forge.core.common.database.data.entity.WordSetEntity
 
 @Database(
     entities = [WordEntity::class, WordSetEntity::class],
-    version = 4
+    version = 4,
 )
 @ConstructedBy(AppDatabaseConstructor::class)
 internal abstract class AppDatabase : RoomDatabase() {

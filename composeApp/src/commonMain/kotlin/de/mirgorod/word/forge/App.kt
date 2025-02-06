@@ -34,7 +34,7 @@ import wordforge.composeapp.generated.resources.result_screen_not_available_yet
 @Composable
 @Preview
 fun App(
-    platformModule: Module = Module()
+    platformModule: Module = Module(),
 ) {
     val navController = rememberNavController()
 
@@ -43,16 +43,16 @@ fun App(
             modules(
                 koinModules(
                     platformModule = platformModule,
-                    navigationModule = navigationModule(navController = navController)
-                )
+                    navigationModule = navigationModule(navController = navController),
+                ),
             )
-        }
+        },
     ) {
         val currentBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = currentBackStackEntry?.destination?.route
 
         val shouldShowBottomBar = currentDestination in listOf(
-            Home::class.qualifiedName, AddSet::class.qualifiedName, Settings::class.qualifiedName
+            Home::class.qualifiedName, AddSet::class.qualifiedName, Settings::class.qualifiedName,
         )
 
         KitTheme {
@@ -61,12 +61,12 @@ fun App(
                     if (shouldShowBottomBar) {
                         BottomNavigationBar(navController = navController)
                     }
-                }
+                },
             ) { innerPadding ->
                 NavHost(
                     navController = navController,
                     startDestination = Home,
-                    modifier = Modifier.padding(innerPadding)
+                    modifier = Modifier.padding(innerPadding),
                 ) {
                     composable<Home> {
                         HomeContent()
@@ -77,7 +77,7 @@ fun App(
                     composable<Settings> {
                         KitResultScreen(
                             messageText = stringResource(
-                                resource = Res.string.result_screen_not_available_yet
+                                resource = Res.string.result_screen_not_available_yet,
                             ),
                             drawableResource = Res.drawable.ic_not_available,
                         )

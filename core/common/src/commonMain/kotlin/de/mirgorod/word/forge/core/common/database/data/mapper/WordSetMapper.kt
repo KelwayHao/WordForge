@@ -7,14 +7,14 @@ internal class WordSetMapper {
     fun mapToWordSetEntity(from: WordSet): WordSetEntity {
         return WordSetEntity(
             id = from.id ?: 0L,
-            name = from.name
+            name = from.name,
         )
     }
 
     fun mapToWordSet(from: WordSetEntity): WordSet {
         return WordSet(
             id = from.id,
-            name = from.name
+            name = from.name,
         )
     }
 }

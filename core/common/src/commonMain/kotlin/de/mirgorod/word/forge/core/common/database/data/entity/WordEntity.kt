@@ -11,9 +11,9 @@ import androidx.room.PrimaryKey
             entity = WordSetEntity::class,
             parentColumns = ["id"],
             childColumns = ["setId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
+            onDelete = ForeignKey.CASCADE,
+        ),
+    ],
 )
 internal data class WordEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

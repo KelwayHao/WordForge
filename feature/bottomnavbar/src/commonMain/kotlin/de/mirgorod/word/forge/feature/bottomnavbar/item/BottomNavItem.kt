@@ -9,5 +9,5 @@ data class BottomNavItem<T : Any>(
     val name: StringResource,
     val route: T,
     val icon: ImageVector,
-    val isEnable: Boolean = true
+    val isEnable: Boolean = true,
 )

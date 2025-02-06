@@ -21,6 +21,6 @@ fun KitOutlinedTextField(
         onValueChange = onValueChange,
         label = label,
         singleLine = singleLine,
-        colors = TextFieldDefaults.outlinedTextFieldColors(backgroundColor = Theme.color.background.primary)
+        colors = TextFieldDefaults.outlinedTextFieldColors(backgroundColor = Theme.color.background.primary),
     )
 }
